@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Earth Analog Finder</title>
+  <meta name="description" content="Which places on Earth best rehearse a Moon or Mars site? Rank Earth analogs by explainable similarity.">
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <img src="assets/logo.svg" alt="" width="40" height="40">
+    <div>
+      <h1>Earth Analog Finder</h1>
+      <p>Which places on Earth best rehearse the Moon and Mars?</p>
+    </div>
+    <span id="mockBadge" class="badge warn" hidden title="Values are placeholders until the data pipeline is run">Moon/Mars values partly estimated</span>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Controls and results">
+      <section>
+        <h2><span class="step">1</span> Pick a target</h2>
+        <div id="targets" class="target-cards"></div>
+      </section>
+      <section>
+        <h2><span class="step">2</span> Tune what matters</h2>
+        <div id="sliders"></div>
+        <button id="resetWeights" class="link-btn" type="button">Reset to equal weights</button>
+        <div id="typeChips" class="chips" aria-label="Filter by environment type"></div>
+      </section>
+      <section>
+        <h2><span class="step">3</span> Best Earth analogs</h2>
+        <ol id="results" class="results"></ol>
+        <p class="hint">Tick two sites to compare them side by side.</p>
+      </section>
+    </aside>
+
+    <div id="map" aria-label="World map of Earth analog sites"></div>
+
+    <aside class="detail" id="detail" aria-live="polite"></aside>
+  </main>
+
+  <section id="compare" class="compare" hidden>
+    <div class="compare-head">
+      <h2>Side-by-side comparison</h2>
+      <button id="closeCompare" class="link-btn" type="button">Close</button>
+    </div>
+    <div id="compareBody"></div>
+  </section>
+
+  <footer class="foot">
+    <span id="assumption"></span>
+    <span>Data: NASA POWER, OpenTopoData, NASA PDS (LRO, MRO/MOLA). Basemap: NASA GIBS, OpenStreetMap.</span>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="scoring.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

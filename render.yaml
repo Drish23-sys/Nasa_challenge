@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: earth-analog-finder
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false          # you will be prompted for it; it is never stored in the repo
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-5-5
+      - key: CORS_ORIGINS
+        value: "*"           # tighten to your Vercel URL once the frontend is deployed
+      - key: EXPLAIN_RATE_LIMIT
+        value: "30"
+      - key: PYTHON_VERSION
+        value: 3.12.3

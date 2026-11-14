@@ -1,0 +1,34 @@
+[
+  {
+    "id": "shackleton", "name": "Shackleton Crater rim", "body": "Moon",
+    "lat": -89.6108, "lon": -173.1881,
+    "blurb": "Permanently shadowed crater at the lunar south pole, a leading candidate for ice and a base location.",
+    "raw": {"slope_deg": 13.13, "roughness_m": 110.24, "temp_range_K": 150, "basaltic": 0.2},
+    "source": "Slope/roughness: LOLA LDEM_80S_80MPP_ADJ (Barker et al. 2023, doi:10.3847/PSJ/acf3e1), 5x5 grid at 500 m on the rim crest. Temperature range: rough team estimate, not sourced. Basaltic: estimate.",
+    "confidence": "estimated"
+  },
+  {
+    "id": "malapert", "name": "Malapert Massif", "body": "Moon",
+    "lat": -85.9876, "lon": 2.0528,
+    "blurb": "High, often-illuminated massif near the south pole with Earth line-of-sight, considered for a base.",
+    "raw": {"slope_deg": 4.8, "roughness_m": 32.59, "temp_range_K": 130, "basaltic": 0.2},
+    "source": "Slope/roughness: LOLA LDEM_80S_80MPP_ADJ (Barker et al. 2023, doi:10.3847/PSJ/acf3e1), 5x5 grid at 500 m at the summit area. Temperature range: rough team estimate, not sourced. Basaltic: estimate.",
+    "confidence": "estimated"
+  },
+  {
+    "id": "jezero", "name": "Jezero Crater", "body": "Mars",
+    "lat": 18.38, "lon": 77.58,
+    "blurb": "Ancient lake basin with a river delta, landing site of Perseverance.",
+    "raw": {"slope_deg": 3.5, "roughness_m": 15, "temp_range_K": 60, "basaltic": 0.7},
+    "source": "Temperature range: derived from July-Aug 2021 daily curves (about 200-260 K), arXiv:2204.12850. Slope/roughness/basaltic: team estimates, not measured.",
+    "confidence": "estimated"
+  },
+  {
+    "id": "gale", "name": "Gale Crater", "body": "Mars",
+    "lat": -5.4, "lon": 137.8,
+    "blurb": "Impact crater with a central mound of layered sediments, explored by Curiosity.",
+    "raw": {"slope_deg": 7.5, "roughness_m": 22, "temp_range_K": 60, "basaltic": 0.6},
+    "source": "Temperature range: derived from July-Aug 2021 daily curves (about 190-250 K), arXiv:2204.12850. Slope/roughness/basaltic: team estimates, not measured.",
+    "confidence": "estimated"
+  }
+]

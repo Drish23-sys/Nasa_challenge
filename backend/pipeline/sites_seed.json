@@ -1,0 +1,300 @@
+[
+  {
+    "id": "atacama",
+    "name": "Atacama Desert, Chile",
+    "type": "desert",
+    "lat": -24.5,
+    "lon": -69.25,
+    "features": [],
+    "well_known": true,
+    "why": "One of the driest places on Earth, with soil chemistry and life limits studied as a Mars analog.",
+    "breaks_down": "Far warmer than the lunar poles, 1 g gravity, thick atmosphere.",
+    "basaltic": 0.15
+  },
+  {
+    "id": "haughton",
+    "name": "Haughton Crater, Devon Island, Canada",
+    "type": "impact",
+    "lat": 75.38,
+    "lon": -89.67,
+    "features": [
+      "impact_crater",
+      "permafrost"
+    ],
+    "well_known": true,
+    "why": "Polar desert impact crater used for rover and human-operations field tests.",
+    "breaks_down": "Carbonate target rock, not basalt; liquid water and some life present in summer.",
+    "basaltic": 0.05
+  },
+  {
+    "id": "death_valley",
+    "name": "Death Valley, USA",
+    "type": "desert",
+    "lat": 36.5,
+    "lon": -117.0,
+    "features": [
+      "evaporite"
+    ],
+    "well_known": true,
+    "why": "Arid basin with alluvial fans, evaporites and large temperature swings.",
+    "breaks_down": "Much hotter and denser air than Mars; no permafrost or ice.",
+    "basaltic": 0.3
+  },
+  {
+    "id": "askja",
+    "name": "Askja and Highlands lava fields, Iceland",
+    "type": "volcanic",
+    "lat": 65.03,
+    "lon": -16.75,
+    "features": [
+      "ice"
+    ],
+    "well_known": true,
+    "why": "Fresh basaltic terrain with volcano-ice interaction, used for Apollo and rover training.",
+    "breaks_down": "Wetter and colder than Mars; vegetation and rain are present.",
+    "basaltic": 0.9
+  },
+  {
+    "id": "dry_valleys",
+    "name": "McMurdo Dry Valleys, Antarctica",
+    "type": "polar",
+    "lat": -77.5,
+    "lon": 162.5,
+    "features": [
+      "permafrost",
+      "ice"
+    ],
+    "well_known": true,
+    "why": "Cold hyperarid ice-free valleys with ground ice, a classic Mars analog.",
+    "breaks_down": "Thicker atmosphere and higher pressure; local meltwater exists.",
+    "basaltic": 0.4
+  },
+  {
+    "id": "lava_beds",
+    "name": "Lava Beds National Monument, USA",
+    "type": "cave",
+    "lat": 41.71,
+    "lon": -121.51,
+    "features": [
+      "lava_tubes"
+    ],
+    "well_known": false,
+    "why": "Basaltic lava tube field, useful for studying subsurface shelter and exploration.",
+    "breaks_down": "Tubes are much smaller than those seen on the Moon and Mars.",
+    "basaltic": 0.95
+  },
+  {
+    "id": "craters_moon",
+    "name": "Craters of the Moon, Idaho, USA",
+    "type": "volcanic",
+    "lat": 43.42,
+    "lon": -113.52,
+    "features": [
+      "lava_tubes"
+    ],
+    "well_known": true,
+    "why": "Young rugged basalt flows and lava tubes, used for astronaut field training.",
+    "breaks_down": "Sagebrush cover and seasonal moisture; far less extreme temperatures.",
+    "basaltic": 0.95
+  },
+  {
+    "id": "mauna_kea",
+    "name": "Mauna Kea, Hawaii, USA",
+    "type": "volcanic",
+    "lat": 19.82,
+    "lon": -155.47,
+    "features": [],
+    "well_known": true,
+    "why": "Basaltic cinder terrain used for regolith and ISRU technology tests.",
+    "breaks_down": "Humid maritime climate below the summit; 1 g and thick air.",
+    "basaltic": 0.95
+  },
+  {
+    "id": "danakil",
+    "name": "Danakil Depression, Ethiopia",
+    "type": "volcanic",
+    "lat": 14.24,
+    "lon": 40.3,
+    "features": [
+      "evaporite",
+      "acid_brine"
+    ],
+    "well_known": false,
+    "why": "Hot basaltic basin with acid brine pools, a less-studied analog for ancient Mars chemistry.",
+    "breaks_down": "Extreme heat, not cold; access and safety are difficult.",
+    "basaltic": 0.9
+  },
+  {
+    "id": "uyuni",
+    "name": "Salar de Uyuni, Bolivia",
+    "type": "desert",
+    "lat": -20.13,
+    "lon": -67.49,
+    "features": [
+      "evaporite"
+    ],
+    "well_known": false,
+    "why": "Huge flat salt crust, useful for testing landing, rover navigation and calibration.",
+    "breaks_down": "Too flat to represent crater or mountain terrain; seasonal water.",
+    "basaltic": 0.1
+  },
+  {
+    "id": "lut",
+    "name": "Dasht-e Lut, Iran",
+    "type": "desert",
+    "lat": 30.5,
+    "lon": 59.0,
+    "features": [],
+    "well_known": false,
+    "why": "Extremely hot, dry, vegetation-free desert with wind-sculpted ridges (yardangs).",
+    "breaks_down": "Heat extremes and field access limit practical testing.",
+    "basaltic": 0.35
+  },
+  {
+    "id": "svalbard",
+    "name": "Adventdalen, Svalbard, Norway",
+    "type": "polar",
+    "lat": 78.2,
+    "lon": 15.6,
+    "features": [
+      "permafrost",
+      "ice"
+    ],
+    "well_known": false,
+    "why": "Permafrost valley with pingos and patterned ground, an analog for Martian ground ice.",
+    "breaks_down": "Wetter and vegetated; strong marine influence.",
+    "basaltic": 0.1
+  },
+  {
+    "id": "meteor_crater",
+    "name": "Meteor Crater, Arizona, USA",
+    "type": "impact",
+    "lat": 35.03,
+    "lon": -111.02,
+    "features": [
+      "impact_crater"
+    ],
+    "well_known": true,
+    "why": "Young, well-preserved simple impact crater used for astronaut crater training.",
+    "breaks_down": "Sedimentary target rock; far warmer than polar lunar craters.",
+    "basaltic": 0.0
+  },
+  {
+    "id": "ries",
+    "name": "Ries Crater, Germany",
+    "type": "impact",
+    "lat": 48.88,
+    "lon": 10.57,
+    "features": [
+      "impact_crater"
+    ],
+    "well_known": true,
+    "why": "Eroded complex impact structure with well-studied breccias, used in Apollo training.",
+    "breaks_down": "Heavily vegetated and eroded; temperate climate.",
+    "basaltic": 0.0
+  },
+  {
+    "id": "pinacate",
+    "name": "Pinacate volcanic field, Mexico",
+    "type": "volcanic",
+    "lat": 31.77,
+    "lon": -113.5,
+    "features": [],
+    "well_known": false,
+    "why": "Arid basaltic field with maar craters and dunes, a combined volcanic and desert analog.",
+    "breaks_down": "Hot summers and sparse desert plants; no polar cold.",
+    "basaltic": 0.9
+  },
+  {
+    "id": "teide",
+    "name": "Teide volcanic area, Tenerife, Spain",
+    "type": "volcanic",
+    "lat": 28.27,
+    "lon": -16.64,
+    "features": [
+      "lava_tubes"
+    ],
+    "well_known": false,
+    "why": "High-altitude volcanic terrain and lava tubes, used in ESA analog campaigns.",
+    "breaks_down": "Island climate and tourism limit access; moderate temperatures.",
+    "basaltic": 0.8
+  },
+  {
+    "id": "tibesti",
+    "name": "Tibesti volcanic massif, Chad",
+    "type": "volcanic",
+    "lat": 21.0,
+    "lon": 17.5,
+    "features": [],
+    "well_known": false,
+    "why": "Hyperarid volcanic highland, a little-studied combination of dryness and volcanism.",
+    "breaks_down": "Remote and unsafe to reach, which limits practical use.",
+    "basaltic": 0.7
+  },
+  {
+    "id": "wadi_rum",
+    "name": "Wadi Rum, Jordan",
+    "type": "desert",
+    "lat": 29.58,
+    "lon": 35.42,
+    "features": [],
+    "well_known": false,
+    "why": "Dry sandstone canyons and dunes, used as a Mars film and analog location.",
+    "breaks_down": "Sandstone not basalt; warm and tourist-visited.",
+    "basaltic": 0.0
+  },
+  {
+    "id": "taklamakan",
+    "name": "Taklamakan Desert, China",
+    "type": "desert",
+    "lat": 38.9,
+    "lon": 82.0,
+    "features": [],
+    "well_known": false,
+    "why": "Huge dune sea with large day-night swings, useful for dust and aeolian studies.",
+    "breaks_down": "Sand dunes, not rocky or cratered terrain.",
+    "basaltic": 0.0
+  },
+  {
+    "id": "ojos",
+    "name": "Ojos del Salado high Andes, Chile",
+    "type": "volcanic",
+    "lat": -27.1,
+    "lon": -68.5,
+    "features": [
+      "permafrost"
+    ],
+    "well_known": false,
+    "why": "Very high, cold, dry volcanic terrain with low air pressure and strong UV.",
+    "breaks_down": "Still much thicker air than Mars; altitude hazards for crews.",
+    "basaltic": 0.7
+  },
+  {
+    "id": "kanger",
+    "name": "Kangerlussuaq ice margin, Greenland",
+    "type": "polar",
+    "lat": 67.0,
+    "lon": -50.7,
+    "features": [
+      "ice"
+    ],
+    "well_known": false,
+    "why": "Ice sheet margin with cold dry katabatic winds, useful for polar ice and logistics tests.",
+    "breaks_down": "Wetter than the poles of the Moon; ice sheet, not buried ice.",
+    "basaltic": 0.1
+  },
+  {
+    "id": "rio_tinto",
+    "name": "Rio Tinto, Spain",
+    "type": "desert",
+    "lat": 37.72,
+    "lon": -6.55,
+    "features": [
+      "acid_brine"
+    ],
+    "well_known": true,
+    "why": "Acidic river with iron minerals and extremophiles, a Mars mineralogy and habitability analog.",
+    "breaks_down": "Wet, vegetated, mild climate; analogous only for chemistry.",
+    "basaltic": 0.1
+  }
+]

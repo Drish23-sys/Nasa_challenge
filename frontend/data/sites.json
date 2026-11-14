@@ -1,0 +1,1108 @@
+{
+  "meta": {
+    "version": "build-2026-11-15-placeholder-targets",
+    "note": "Earth values are sampled from open data. Moon/Mars target values are still placeholders - see backend/pipeline/targets.json.",
+    "factors": {
+      "slope": {
+        "label": "Slope",
+        "desc": "Mean slope over a ~2 km patch (0 = flat, 1 = 25 degrees or steeper)"
+      },
+      "roughness": {
+        "label": "Roughness",
+        "desc": "Elevation scatter after removing the average tilt (0 = smooth, 1 = 50 m or more)"
+      },
+      "temp_range": {
+        "label": "Temperature extremes",
+        "desc": "Thermal range (1 = 120 K or more). Earth uses annual air-temperature extremes; Moon/Mars use surface temperature range - a proxy, not an exact match."
+      },
+      "aridity": {
+        "label": "Aridity",
+        "desc": "1 = no precipitation. Moon and Mars are set to 1 (no rain)."
+      },
+      "basaltic": {
+        "label": "Volcanic/basaltic geology",
+        "desc": "Hand-tagged share of basaltic or volcanic terrain (0-1)"
+      }
+    },
+    "normalization": {
+      "slope_deg_max": 25.0,
+      "roughness_m_max": 150.0,
+      "temp_range_K_max": 200.0,
+      "precip_mm_day_humid": 3.0
+    },
+    "confidence_values": [
+      "measured",
+      "estimated"
+    ],
+    "assumption": "Moon and Mars have no vegetation or rainfall. Aridity is compared as a relative proxy.",
+    "data_sources": [
+      "NASA POWER climatology (power.larc.nasa.gov)",
+      "OpenTopoData elevation API (opentopodata.org)",
+      "Moon/Mars targets: see each target's provenance (LOLA, Diviner, MOLA, THEMIS via NASA PDS)"
+    ]
+  },
+  "targets": [
+    {
+      "id": "shackleton",
+      "name": "Shackleton Crater rim",
+      "body": "Moon",
+      "lat": -89.6108,
+      "lon": -173.1881,
+      "blurb": "Permanently shadowed crater at the lunar south pole, a leading candidate for ice and a base location.",
+      "factors": {
+        "slope": 0.5252,
+        "roughness": 0.7349333333333333,
+        "temp_range": 0.75,
+        "aridity": 1.0,
+        "basaltic": 0.2
+      },
+      "raw": {
+        "slope_deg": 13.13,
+        "roughness_m": 110.24,
+        "temp_range_K": 150,
+        "basaltic": 0.2
+      },
+      "confidence": {
+        "slope": "estimated",
+        "roughness": "estimated",
+        "temp_range": "estimated",
+        "aridity": "estimated",
+        "basaltic": "estimated"
+      },
+      "provenance": {
+        "all": "Slope/roughness: LOLA LDEM_80S_80MPP_ADJ (Barker et al. 2023, doi:10.3847/PSJ/acf3e1), 5x5 grid at 500 m on the rim crest. Temperature range: rough team estimate, not sourced. Basaltic: estimate."
+      }
+    },
+    {
+      "id": "malapert",
+      "name": "Malapert Massif",
+      "body": "Moon",
+      "lat": -85.9876,
+      "lon": 2.0528,
+      "blurb": "High, often-illuminated massif near the south pole with Earth line-of-sight, considered for a base.",
+      "factors": {
+        "slope": 0.192,
+        "roughness": 0.2172666666666667,
+        "temp_range": 0.65,
+        "aridity": 1.0,
+        "basaltic": 0.2
+      },
+      "raw": {
+        "slope_deg": 4.8,
+        "roughness_m": 32.59,
+        "temp_range_K": 130,
+        "basaltic": 0.2
+      },
+      "confidence": {
+        "slope": "estimated",
+        "roughness": "estimated",
+        "temp_range": "estimated",
+        "aridity": "estimated",
+        "basaltic": "estimated"
+      },
+      "provenance": {
+        "all": "Slope/roughness: LOLA LDEM_80S_80MPP_ADJ (Barker et al. 2023, doi:10.3847/PSJ/acf3e1), 5x5 grid at 500 m at the summit area. Temperature range: rough team estimate, not sourced. Basaltic: estimate."
+      }
+    },
+    {
+      "id": "jezero",
+      "name": "Jezero Crater",
+      "body": "Mars",
+      "lat": 18.38,
+      "lon": 77.58,
+      "blurb": "Ancient lake basin with a river delta, landing site of Perseverance.",
+      "factors": {
+        "slope": 0.14,
+        "roughness": 0.1,
+        "temp_range": 0.3,
+        "aridity": 1.0,
+        "basaltic": 0.7
+      },
+      "raw": {
+        "slope_deg": 3.5,
+        "roughness_m": 15,
+        "temp_range_K": 60,
+        "basaltic": 0.7
+      },
+      "confidence": {
+        "slope": "estimated",
+        "roughness": "estimated",
+        "temp_range": "estimated",
+        "aridity": "estimated",
+        "basaltic": "estimated"
+      },
+      "provenance": {
+        "all": "Temperature range: derived from July-Aug 2021 daily curves (about 200-260 K), arXiv:2204.12850. Slope/roughness/basaltic: team estimates, not measured."
+      }
+    },
+    {
+      "id": "gale",
+      "name": "Gale Crater",
+      "body": "Mars",
+      "lat": -5.4,
+      "lon": 137.8,
+      "blurb": "Impact crater with a central mound of layered sediments, explored by Curiosity.",
+      "factors": {
+        "slope": 0.3,
+        "roughness": 0.14666666666666667,
+        "temp_range": 0.3,
+        "aridity": 1.0,
+        "basaltic": 0.6
+      },
+      "raw": {
+        "slope_deg": 7.5,
+        "roughness_m": 22,
+        "temp_range_K": 60,
+        "basaltic": 0.6
+      },
+      "confidence": {
+        "slope": "estimated",
+        "roughness": "estimated",
+        "temp_range": "estimated",
+        "aridity": "estimated",
+        "basaltic": "estimated"
+      },
+      "provenance": {
+        "all": "Temperature range: derived from July-Aug 2021 daily curves (about 190-250 K), arXiv:2204.12850. Slope/roughness/basaltic: team estimates, not measured."
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "atacama",
+      "name": "Atacama Desert, Chile",
+      "type": "desert",
+      "lat": -24.5,
+      "lon": -69.25,
+      "factors": {
+        "slope": 0.3191468834568537,
+        "roughness": 0.05964725941361879,
+        "temp_range": 0.18539999999999998,
+        "aridity": 0.99,
+        "basaltic": 0.15
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 7.98,
+        "roughness_m": 8.95,
+        "temp_range_K": 37.1,
+        "precip_mm_day": 0.03,
+        "mean_elevation_m": 2664.8
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": true,
+      "why": "One of the driest places on Earth, with soil chemistry and life limits studied as a Mars analog.",
+      "breaks_down": "Far warmer than the lunar poles, 1 g gravity, thick atmosphere.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "haughton",
+      "name": "Haughton Crater, Devon Island, Canada",
+      "type": "impact",
+      "lat": 75.38,
+      "lon": -89.67,
+      "factors": {
+        "slope": 0.06115526602543471,
+        "roughness": 0.0644517390507554,
+        "temp_range": 0.3268,
+        "aridity": 0.7166666666666667,
+        "basaltic": 0.05
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 1.53,
+        "roughness_m": 9.67,
+        "temp_range_K": 65.4,
+        "precip_mm_day": 0.85,
+        "mean_elevation_m": 131.3
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "impact_crater",
+        "permafrost"
+      ],
+      "well_known": true,
+      "why": "Polar desert impact crater used for rover and human-operations field tests.",
+      "breaks_down": "Carbonate target rock, not basalt; liquid water and some life present in summer.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "death_valley",
+      "name": "Death Valley, USA",
+      "type": "desert",
+      "lat": 36.5,
+      "lon": -117.0,
+      "factors": {
+        "slope": 0.46521589508345124,
+        "roughness": 0.4296248699608635,
+        "temp_range": 0.26189999999999997,
+        "aridity": 0.8866666666666667,
+        "basaltic": 0.3
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 11.63,
+        "roughness_m": 64.44,
+        "temp_range_K": 52.4,
+        "precip_mm_day": 0.34,
+        "mean_elevation_m": 112.5
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "evaporite"
+      ],
+      "well_known": true,
+      "why": "Arid basin with alluvial fans, evaporites and large temperature swings.",
+      "breaks_down": "Much hotter and denser air than Mars; no permafrost or ice.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "askja",
+      "name": "Askja and Highlands lava fields, Iceland",
+      "type": "volcanic",
+      "lat": 65.03,
+      "lon": -16.75,
+      "factors": {
+        "slope": 0.0030617976961338864,
+        "roughness": 0.004446221866808999,
+        "temp_range": 0.1707,
+        "aridity": 0.21333333333333337,
+        "basaltic": 0.9
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 0.08,
+        "roughness_m": 0.67,
+        "temp_range_K": 34.1,
+        "precip_mm_day": 2.36,
+        "mean_elevation_m": 1052.4
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "ice"
+      ],
+      "well_known": true,
+      "why": "Fresh basaltic terrain with volcano-ice interaction, used for Apollo and rover training.",
+      "breaks_down": "Wetter and colder than Mars; vegetation and rain are present.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "dry_valleys",
+      "name": "McMurdo Dry Valleys, Antarctica",
+      "type": "polar",
+      "lat": -77.5,
+      "lon": 162.5,
+      "factors": {
+        "slope": 0.21234993391520463,
+        "roughness": 0.20516139987824217,
+        "temp_range": 0.23709999999999998,
+        "aridity": 0.9333333333333333,
+        "basaltic": 0.4
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 5.31,
+        "roughness_m": 30.77,
+        "temp_range_K": 47.4,
+        "precip_mm_day": 0.2,
+        "mean_elevation_m": 1225.8
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "permafrost",
+        "ice"
+      ],
+      "well_known": true,
+      "why": "Cold hyperarid ice-free valleys with ground ice, a classic Mars analog.",
+      "breaks_down": "Thicker atmosphere and higher pressure; local meltwater exists.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "lava_beds",
+      "name": "Lava Beds National Monument, USA",
+      "type": "cave",
+      "lat": 41.71,
+      "lon": -121.51,
+      "factors": {
+        "slope": 0.14273277117150215,
+        "roughness": 0.09142778571090951,
+        "temp_range": 0.31625,
+        "aridity": 0.3833333333333333,
+        "basaltic": 0.95
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 3.57,
+        "roughness_m": 13.71,
+        "temp_range_K": 63.2,
+        "precip_mm_day": 1.85,
+        "mean_elevation_m": 1473.1
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "lava_tubes"
+      ],
+      "well_known": false,
+      "why": "Basaltic lava tube field, useful for studying subsurface shelter and exploration.",
+      "breaks_down": "Tubes are much smaller than those seen on the Moon and Mars.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "craters_moon",
+      "name": "Craters of the Moon, Idaho, USA",
+      "type": "volcanic",
+      "lat": 43.42,
+      "lon": -113.52,
+      "factors": {
+        "slope": 0.07639025529755789,
+        "roughness": 0.07009073484499297,
+        "temp_range": 0.34765,
+        "aridity": 0.6200000000000001,
+        "basaltic": 0.95
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 1.91,
+        "roughness_m": 10.51,
+        "temp_range_K": 69.5,
+        "precip_mm_day": 1.14,
+        "mean_elevation_m": 1755.6
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "lava_tubes"
+      ],
+      "well_known": true,
+      "why": "Young rugged basalt flows and lava tubes, used for astronaut field training.",
+      "breaks_down": "Sagebrush cover and seasonal moisture; far less extreme temperatures.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "mauna_kea",
+      "name": "Mauna Kea, Hawaii, USA",
+      "type": "volcanic",
+      "lat": 19.82,
+      "lon": -155.47,
+      "factors": {
+        "slope": 0.3161197537481372,
+        "roughness": 0.3333191997003606,
+        "temp_range": 0.0796,
+        "aridity": 0.0,
+        "basaltic": 0.95
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 7.9,
+        "roughness_m": 50.0,
+        "temp_range_K": 15.9,
+        "precip_mm_day": 4.41,
+        "mean_elevation_m": 4005.8
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": true,
+      "why": "Basaltic cinder terrain used for regolith and ISRU technology tests.",
+      "breaks_down": "Humid maritime climate below the summit; 1 g and thick air.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "danakil",
+      "name": "Danakil Depression, Ethiopia",
+      "type": "volcanic",
+      "lat": 14.24,
+      "lon": 40.3,
+      "factors": {
+        "slope": 0.06895939835351782,
+        "roughness": 0.07348638573837259,
+        "temp_range": 0.14505,
+        "aridity": 0.5900000000000001,
+        "basaltic": 0.9
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 1.72,
+        "roughness_m": 11.02,
+        "temp_range_K": 29.0,
+        "precip_mm_day": 1.23,
+        "mean_elevation_m": -100.7
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "evaporite",
+        "acid_brine"
+      ],
+      "well_known": false,
+      "why": "Hot basaltic basin with acid brine pools, a less-studied analog for ancient Mars chemistry.",
+      "breaks_down": "Extreme heat, not cold; access and safety are difficult.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "uyuni",
+      "name": "Salar de Uyuni, Bolivia",
+      "type": "desert",
+      "lat": -20.13,
+      "lon": -67.49,
+      "factors": {
+        "slope": 0.006169048649623378,
+        "roughness": 0.006586180818788467,
+        "temp_range": 0.1977,
+        "aridity": 0.6966666666666667,
+        "basaltic": 0.1
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 0.15,
+        "roughness_m": 0.99,
+        "temp_range_K": 39.5,
+        "precip_mm_day": 0.91,
+        "mean_elevation_m": 3658.8
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "evaporite"
+      ],
+      "well_known": false,
+      "why": "Huge flat salt crust, useful for testing landing, rover navigation and calibration.",
+      "breaks_down": "Too flat to represent crater or mountain terrain; seasonal water.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "lut",
+      "name": "Dasht-e Lut, Iran",
+      "type": "desert",
+      "lat": 30.5,
+      "lon": 59.0,
+      "factors": {
+        "slope": 0.0121951792274716,
+        "roughness": 0.01126962485819497,
+        "temp_range": 0.28314999999999996,
+        "aridity": 0.9266666666666666,
+        "basaltic": 0.35
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 0.3,
+        "roughness_m": 1.69,
+        "temp_range_K": 56.6,
+        "precip_mm_day": 0.22,
+        "mean_elevation_m": 552.3
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": false,
+      "why": "Extremely hot, dry, vegetation-free desert with wind-sculpted ridges (yardangs).",
+      "breaks_down": "Heat extremes and field access limit practical testing.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "svalbard",
+      "name": "Adventdalen, Svalbard, Norway",
+      "type": "polar",
+      "lat": 78.2,
+      "lon": 15.6,
+      "factors": {
+        "slope": 0.5487777807116622,
+        "roughness": 0.6059634605779093,
+        "temp_range": 0.2516,
+        "aridity": 0.3766666666666666,
+        "basaltic": 0.1
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 13.72,
+        "roughness_m": 90.89,
+        "temp_range_K": 50.3,
+        "precip_mm_day": 1.87,
+        "mean_elevation_m": 310.5
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "permafrost",
+        "ice"
+      ],
+      "well_known": false,
+      "why": "Permafrost valley with pingos and patterned ground, an analog for Martian ground ice.",
+      "breaks_down": "Wetter and vegetated; strong marine influence.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "meteor_crater",
+      "name": "Meteor Crater, Arizona, USA",
+      "type": "impact",
+      "lat": 35.03,
+      "lon": -111.02,
+      "factors": {
+        "slope": 0.21896253949116418,
+        "roughness": 0.2628623974630071,
+        "temp_range": 0.30095,
+        "aridity": 0.6200000000000001,
+        "basaltic": 0.0
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 5.47,
+        "roughness_m": 39.43,
+        "temp_range_K": 60.2,
+        "precip_mm_day": 1.14,
+        "mean_elevation_m": 1675.4
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "impact_crater"
+      ],
+      "well_known": true,
+      "why": "Young, well-preserved simple impact crater used for astronaut crater training.",
+      "breaks_down": "Sedimentary target rock; far warmer than polar lunar craters.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "ries",
+      "name": "Ries Crater, Germany",
+      "type": "impact",
+      "lat": 48.88,
+      "lon": 10.57,
+      "factors": {
+        "slope": 0.015938246052054284,
+        "roughness": 0.01820964335485762,
+        "temp_range": 0.27695000000000003,
+        "aridity": 0.31666666666666676,
+        "basaltic": 0.0
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 0.4,
+        "roughness_m": 2.73,
+        "temp_range_K": 55.4,
+        "precip_mm_day": 2.05,
+        "mean_elevation_m": 419.7
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "impact_crater"
+      ],
+      "well_known": true,
+      "why": "Eroded complex impact structure with well-studied breccias, used in Apollo training.",
+      "breaks_down": "Heavily vegetated and eroded; temperate climate.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "pinacate",
+      "name": "Pinacate volcanic field, Mexico",
+      "type": "volcanic",
+      "lat": 31.77,
+      "lon": -113.5,
+      "factors": {
+        "slope": 0.30315561410152475,
+        "roughness": 0.36088375475275203,
+        "temp_range": 0.26099999999999995,
+        "aridity": 0.8733333333333333,
+        "basaltic": 0.9
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 7.58,
+        "roughness_m": 54.13,
+        "temp_range_K": 52.2,
+        "precip_mm_day": 0.38,
+        "mean_elevation_m": 957.8
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": false,
+      "why": "Arid basaltic field with maar craters and dunes, a combined volcanic and desert analog.",
+      "breaks_down": "Hot summers and sparse desert plants; no polar cold.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "teide",
+      "name": "Teide volcanic area, Tenerife, Spain",
+      "type": "volcanic",
+      "lat": 28.27,
+      "lon": -16.64,
+      "factors": {
+        "slope": 0.8540540741856666,
+        "roughness": 0.9731478727419707,
+        "temp_range": 0.07859999999999999,
+        "aridity": 0.7733333333333333,
+        "basaltic": 0.8
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 21.35,
+        "roughness_m": 145.97,
+        "temp_range_K": 15.7,
+        "precip_mm_day": 0.68,
+        "mean_elevation_m": 3265.7
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "lava_tubes"
+      ],
+      "well_known": false,
+      "why": "High-altitude volcanic terrain and lava tubes, used in ESA analog campaigns.",
+      "breaks_down": "Island climate and tourism limit access; moderate temperatures.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "tibesti",
+      "name": "Tibesti volcanic massif, Chad",
+      "type": "volcanic",
+      "lat": 21.0,
+      "lon": 17.5,
+      "factors": {
+        "slope": 0.07645268401715344,
+        "roughness": 0.05908186410961207,
+        "temp_range": 0.21775000000000003,
+        "aridity": 0.96,
+        "basaltic": 0.7
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 1.91,
+        "roughness_m": 8.86,
+        "temp_range_K": 43.6,
+        "precip_mm_day": 0.12,
+        "mean_elevation_m": 1678.4
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": false,
+      "why": "Hyperarid volcanic highland, a little-studied combination of dryness and volcanism.",
+      "breaks_down": "Remote and unsafe to reach, which limits practical use.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "wadi_rum",
+      "name": "Wadi Rum, Jordan",
+      "type": "desert",
+      "lat": 29.58,
+      "lon": 35.42,
+      "factors": {
+        "slope": 0.6033986949465262,
+        "roughness": 0.8155523608777879,
+        "temp_range": 0.2446,
+        "aridity": 0.9633333333333334,
+        "basaltic": 0.0
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 15.08,
+        "roughness_m": 122.33,
+        "temp_range_K": 48.9,
+        "precip_mm_day": 0.11,
+        "mean_elevation_m": 1041.0
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": false,
+      "why": "Dry sandstone canyons and dunes, used as a Mars film and analog location.",
+      "breaks_down": "Sandstone not basalt; warm and tourist-visited.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "taklamakan",
+      "name": "Taklamakan Desert, China",
+      "type": "desert",
+      "lat": 38.9,
+      "lon": 82.0,
+      "factors": {
+        "slope": 0.01578069641825422,
+        "roughness": 0.015566345464209434,
+        "temp_range": 0.31115000000000004,
+        "aridity": 0.9466666666666667,
+        "basaltic": 0.0
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 0.39,
+        "roughness_m": 2.33,
+        "temp_range_K": 62.2,
+        "precip_mm_day": 0.16,
+        "mean_elevation_m": 1133.9
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [],
+      "well_known": false,
+      "why": "Huge dune sea with large day-night swings, useful for dust and aeolian studies.",
+      "breaks_down": "Sand dunes, not rocky or cratered terrain.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "ojos",
+      "name": "Ojos del Salado high Andes, Chile",
+      "type": "volcanic",
+      "lat": -27.1,
+      "lon": -68.5,
+      "factors": {
+        "slope": 0.40637720672366806,
+        "roughness": 0.2490523907400474,
+        "temp_range": 0.22884999999999997,
+        "aridity": 0.8,
+        "basaltic": 0.7
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 10.16,
+        "roughness_m": 37.36,
+        "temp_range_K": 45.8,
+        "precip_mm_day": 0.6,
+        "mean_elevation_m": 5618.2
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "permafrost"
+      ],
+      "well_known": false,
+      "why": "Very high, cold, dry volcanic terrain with low air pressure and strong UV.",
+      "breaks_down": "Still much thicker air than Mars; altitude hazards for crews.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "kanger",
+      "name": "Kangerlussuaq ice margin, Greenland",
+      "type": "polar",
+      "lat": 67.0,
+      "lon": -50.7,
+      "factors": {
+        "slope": 0.07706473302950204,
+        "roughness": 0.08712433006278376,
+        "temp_range": 0.30675,
+        "aridity": 0.6200000000000001,
+        "basaltic": 0.1
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 1.93,
+        "roughness_m": 13.07,
+        "temp_range_K": 61.4,
+        "precip_mm_day": 1.14,
+        "mean_elevation_m": 66.0
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "ice"
+      ],
+      "well_known": false,
+      "why": "Ice sheet margin with cold dry katabatic winds, useful for polar ice and logistics tests.",
+      "breaks_down": "Wetter than the poles of the Moon; ice sheet, not buried ice.",
+      "image_url": null,
+      "image_credit": null
+    },
+    {
+      "id": "rio_tinto",
+      "name": "Rio Tinto, Spain",
+      "type": "desert",
+      "lat": 37.72,
+      "lon": -6.55,
+      "factors": {
+        "slope": 0.23800872583635652,
+        "roughness": 0.26127346252963046,
+        "temp_range": 0.25434999999999997,
+        "aridity": 0.5733333333333333,
+        "basaltic": 0.1
+      },
+      "confidence": {
+        "slope": "measured",
+        "roughness": "measured",
+        "temp_range": "measured",
+        "aridity": "measured",
+        "basaltic": "estimated"
+      },
+      "raw": {
+        "slope_deg": 5.95,
+        "roughness_m": 39.19,
+        "temp_range_K": 50.9,
+        "precip_mm_day": 1.28,
+        "mean_elevation_m": 441.2
+      },
+      "provenance": {
+        "slope": "OpenTopoData 'mapzen', 5x5 grid at 500 m",
+        "roughness": "OpenTopoData 'mapzen', plane-fit residual std-dev",
+        "temp_range": "NASA POWER climatology, T2M_MAX / T2M_MIN monthly",
+        "aridity": "NASA POWER climatology, PRECTOTCORR annual",
+        "basaltic": "hand-tagged from published geology (replace with a geology layer if time allows)"
+      },
+      "features": [
+        "acid_brine"
+      ],
+      "well_known": true,
+      "why": "Acidic river with iron minerals and extremophiles, a Mars mineralogy and habitability analog.",
+      "breaks_down": "Wet, vegetated, mild climate; analogous only for chemistry.",
+      "image_url": null,
+      "image_credit": null
+    }
+  ]
+}
