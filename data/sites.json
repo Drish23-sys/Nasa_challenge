@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "build-2026-11-15-placeholder-targets",
-    "note": "Earth values are sampled from open data. Moon/Mars target values are still placeholders - see backend/pipeline/targets.json.",
+    "version": "build-2026-11-15",
+    "note": "Built from open data.",
     "factors": {
       "slope": {
         "label": "Slope",
@@ -63,8 +63,8 @@
         "basaltic": 0.2
       },
       "confidence": {
-        "slope": "estimated",
-        "roughness": "estimated",
+        "slope": "measured",
+        "roughness": "measured",
         "temp_range": "estimated",
         "aridity": "estimated",
         "basaltic": "estimated"
@@ -94,8 +94,8 @@
         "basaltic": 0.2
       },
       "confidence": {
-        "slope": "estimated",
-        "roughness": "estimated",
+        "slope": "measured",
+        "roughness": "measured",
         "temp_range": "estimated",
         "aridity": "estimated",
         "basaltic": "estimated"

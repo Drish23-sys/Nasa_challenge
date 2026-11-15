@@ -68,8 +68,7 @@ def _need_target(target_id: str) -> dict:
 @app.get("/api/health")
 def health():
     meta = data.load()["meta"]
-    return {"status": "ok", "data_version": meta.get("version"), "ai_configured": bool(os.getenv("ANTHROPIC_API_KEY")),
-            "model": ai.MODEL}
+    return {"status": "ok", "data_version": meta.get("version"), **ai.status()}
 
 
 @app.get("/api/data")

@@ -209,7 +209,9 @@ def build(args) -> dict:
         targets.append({
             "id": t["id"], "name": t["name"], "body": t["body"], "lat": t["lat"], "lon": t["lon"],
             "blurb": t["blurb"], "factors": factors, "raw": r,
-            "confidence": {f: t.get("confidence", "estimated") for f in factors},
+            "confidence": ({f: t["confidence"].get(f, "estimated") for f in factors}
+                           if isinstance(t.get("confidence"), dict)
+                           else {f: t.get("confidence", "estimated") for f in factors}),
             "provenance": {"all": t["source"]},
         })
 

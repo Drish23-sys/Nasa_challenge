@@ -5,7 +5,7 @@
     "blurb": "Permanently shadowed crater at the lunar south pole, a leading candidate for ice and a base location.",
     "raw": {"slope_deg": 13.13, "roughness_m": 110.24, "temp_range_K": 150, "basaltic": 0.2},
     "source": "Slope/roughness: LOLA LDEM_80S_80MPP_ADJ (Barker et al. 2023, doi:10.3847/PSJ/acf3e1), 5x5 grid at 500 m on the rim crest. Temperature range: rough team estimate, not sourced. Basaltic: estimate.",
-    "confidence": "estimated"
+    "confidence": {"slope": "measured", "roughness": "measured", "temp_range": "estimated", "aridity": "estimated", "basaltic": "estimated"}
   },
   {
     "id": "malapert", "name": "Malapert Massif", "body": "Moon",
@@ -13,7 +13,7 @@
     "blurb": "High, often-illuminated massif near the south pole with Earth line-of-sight, considered for a base.",
     "raw": {"slope_deg": 4.8, "roughness_m": 32.59, "temp_range_K": 130, "basaltic": 0.2},
     "source": "Slope/roughness: LOLA LDEM_80S_80MPP_ADJ (Barker et al. 2023, doi:10.3847/PSJ/acf3e1), 5x5 grid at 500 m at the summit area. Temperature range: rough team estimate, not sourced. Basaltic: estimate.",
-    "confidence": "estimated"
+    "confidence": {"slope": "measured", "roughness": "measured", "temp_range": "estimated", "aridity": "estimated", "basaltic": "estimated"}
   },
   {
     "id": "jezero", "name": "Jezero Crater", "body": "Mars",

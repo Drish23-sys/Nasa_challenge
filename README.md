@@ -4,7 +4,7 @@ NASA Space Apps Challenge 2026 - *Identify Earth Locations that Analog the Perma
 
 Pick a Moon or Mars target site and see which places on Earth best rehearse it. Every match is
 **explainable** (per-factor scores, adjustable weights), honest about **where the analogy breaks down**,
-and can be explained in plain language by an **AI model** that is only allowed to use the numbers in the data.
+and can be explained in plain language by an **AI model** (Google Gemini by default, Claude optional) that is only allowed to use the numbers in the data.
 
 ![heatmap](docs/figures/similarity_heatmap.png)
 
@@ -19,8 +19,9 @@ and can be explained in plain language by an **AI model** that is only allowed t
 2. Per-factor similarity = `1 - |target - candidate|`. Overall score = weighted average (equal weights by default).
 3. The browser does the scoring (`frontend/scoring.js`), so sliders re-rank instantly. The backend has the identical maths
    (`backend/app/scoring.py`) and a parity script proves they match.
-4. `POST /api/explain` sends the two sites' numbers to an AI model and returns a short explanation.
-   No API key, or any failure, falls back to a template, so the demo never breaks.
+4. `POST /api/explain` sends the two sites' numbers to an AI model (Gemini if `GEMINI_API_KEY` is set, otherwise Claude if `ANTHROPIC_API_KEY` is set)
+   and returns a short explanation. No key, a wrong model name, or any failure falls back to a template, so the demo never breaks.
+   `/api/health` shows which provider and model are active.
 
 ## Repo layout
 
@@ -47,7 +48,7 @@ cp .env.example .env                 # then paste your key (optional - app works
 python backend/pipeline/build_sites.py
 
 # 2. run API + UI together at http://127.0.0.1:8000
-export ANTHROPIC_API_KEY=sk-ant-...  # Windows PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
+export GEMINI_API_KEY=...            # Windows PowerShell: $env:GEMINI_API_KEY="..."  (free key: https://aistudio.google.com/apikey)
 uvicorn app.main:app --reload --app-dir backend
 
 # 3. checks and figures
@@ -62,7 +63,7 @@ Swagger docs for the API: http://127.0.0.1:8000/docs
 
 **Backend on Render** (simplest: Blueprint)
 1. Push to GitHub. In Render: *New > Blueprint*, pick the repo (it reads `render.yaml`).
-2. When asked, set `ANTHROPIC_API_KEY` (never put it in the repo). Optionally set `CORS_ORIGINS` to your Vercel URL.
+2. When asked, set `GEMINI_API_KEY` (never put it in the repo). Leave `GEMINI_MODEL` as is unless Google renames the model. Optionally set `CORS_ORIGINS` to your Vercel URL.
 3. Check `https://<your-service>.onrender.com/api/health`. Because the service also serves `frontend/`, this URL is already a working full app.
 4. Free Render services sleep when idle; the first request can take ~30-60 s. The UI shows a waiting message for AI calls and the map itself uses static data, so it still works.
 
@@ -72,7 +73,7 @@ Swagger docs for the API: http://127.0.0.1:8000/docs
 
 ## Security
 
-- The API key lives only in Render's environment variables. The browser never sees it.
+- The Gemini key lives only in Render's environment variables. The browser never sees it.
 - `/api/explain` is rate-limited per IP (`EXPLAIN_RATE_LIMIT`, default 30/hour) so a public demo cannot burn your credits.
 - `.env` is git-ignored. If a key ever lands in a commit, rotate it.
 

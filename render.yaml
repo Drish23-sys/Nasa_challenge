@@ -7,10 +7,10 @@ services:
     startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     envVars:
-      - key: ANTHROPIC_API_KEY
+      - key: GEMINI_API_KEY
         sync: false          # you will be prompted for it; it is never stored in the repo
-      - key: ANTHROPIC_MODEL
-        value: claude-sonnet-5-5
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash   # if the AI button falls back to template text, check the model name in Google AI Studio
       - key: CORS_ORIGINS
         value: "*"           # tighten to your Vercel URL once the frontend is deployed
       - key: EXPLAIN_RATE_LIMIT

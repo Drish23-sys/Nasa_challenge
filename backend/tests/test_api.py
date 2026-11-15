@@ -1,6 +1,5 @@
 import sys
 from pathlib import Path
-from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
@@ -15,7 +14,8 @@ client = TestClient(app)
 
 @pytest.fixture(autouse=True)
 def no_key(monkeypatch):
-    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    for k in ("GEMINI_API_KEY", "GOOGLE_API_KEY", "ANTHROPIC_API_KEY", "AI_PROVIDER", "GEMINI_MODEL"):
+        monkeypatch.delenv(k, raising=False)
     ai._cache.clear()
 
 
@@ -52,30 +52,62 @@ def test_explain_falls_back_to_template_without_key():
     assert "Atacama" in body["explanation"]
 
 
-def test_explain_uses_ai_when_available(monkeypatch):
+def test_provider_selection(monkeypatch):
+    assert ai.provider() == "none" and ai.status()["ai_configured"] is False
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "a")
+    assert ai.provider() == "anthropic"
+    monkeypatch.setenv("GEMINI_API_KEY", "g")
+    assert ai.provider() == "gemini"           # Gemini wins when both are set
+    monkeypatch.setenv("AI_PROVIDER", "anthropic")
+    assert ai.provider() == "anthropic"
+    monkeypatch.setenv("AI_PROVIDER", "none")
+    assert ai.provider() == "none"
+    monkeypatch.setenv("AI_PROVIDER", "gemini")
+    monkeypatch.delenv("GEMINI_API_KEY")
+    assert ai.provider() == "none"              # forced provider without its key -> template
+
+
+def test_health_reports_ai_status(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "g")
+    monkeypatch.setenv("GEMINI_MODEL", "my-model")
+    body = client.get("/api/health").json()
+    assert body["ai_configured"] is True and body["ai_provider"] == "gemini" and body["model"] == "my-model"
+
+
+def test_explain_uses_gemini_and_caches(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "g")
     calls = []
 
-    class FakeMessages:
-        def create(self, **kw):
-            calls.append(kw)
-            return SimpleNamespace(content=[SimpleNamespace(type="text", text="Fake AI explanation.")])
+    def fake(system, user, model):
+        calls.append((system, user, model))
+        return "Fake Gemini explanation."
 
-    monkeypatch.setattr(ai, "_client", lambda: SimpleNamespace(messages=FakeMessages()))
+    monkeypatch.setattr(ai, "_call_gemini", fake)
     body = {"target_id": "gale", "candidate_id": "dry_valleys"}
     r = client.post("/api/explain", json=body)
-    assert r.json()["source"] == "ai" and r.json()["explanation"] == "Fake AI explanation."
-    assert len(calls) == 1 and "similarity_percent" in calls[0]["messages"][0]["content"]
+    j = r.json()
+    assert j["source"] == "ai" and j["explanation"] == "Fake Gemini explanation." and j["model"] == ai.GEMINI_DEFAULT
+    assert len(calls) == 1 and "similarity_percent" in calls[0][1] and "ONLY" in calls[0][0]
     client.post("/api/explain", json=body)
     assert len(calls) == 1  # second request served from cache
 
 
-def test_explain_survives_ai_failure(monkeypatch):
-    class Boom:
-        class messages:
-            @staticmethod
-            def create(**kw):
-                raise RuntimeError("network down")
+def test_explain_uses_anthropic_when_only_that_key(monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "a")
+    monkeypatch.setattr(ai, "_call_anthropic", lambda s, u, m: "Fake Claude explanation.")
+    j = client.post("/api/explain", json={"target_id": "gale", "candidate_id": "atacama"}).json()
+    assert j["source"] == "ai" and j["model"] == ai.ANTHROPIC_DEFAULT
 
-    monkeypatch.setattr(ai, "_client", lambda: Boom())
+
+@pytest.mark.parametrize("behavior", ["raise", "empty"])
+def test_explain_survives_ai_failure(monkeypatch, behavior):
+    monkeypatch.setenv("GEMINI_API_KEY", "g")
+
+    def bad(system, user, model):
+        if behavior == "raise":
+            raise RuntimeError("404 model not found")
+        return ""
+
+    monkeypatch.setattr(ai, "_call_gemini", bad)
     r = client.post("/api/explain", json={"target_id": "gale", "candidate_id": "uyuni"})
-    assert r.status_code == 200 and r.json()["source"] == "template"
+    assert r.status_code == 200 and r.json()["source"] == "template" and r.json()["model"] is None
